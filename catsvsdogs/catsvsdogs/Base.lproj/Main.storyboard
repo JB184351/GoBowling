@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="catsvsdogs" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dogs and Cats" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6MF-Uq-NFv">
+                                <rect key="frame" x="16" y="50" width="343" height="55"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="animal-cat-cute-45201.jpg" highlightedImage="animal-cat-cute-45201.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="o2U-zD-GEo">
+                                <rect key="frame" x="25" y="221" width="325" height="224"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s3R-tD-NrC">
+                                <rect key="frame" x="163" y="532" width="46" height="30"/>
+                                <state key="normal" title="Image"/>
+                                <connections>
+                                    <action selector="uploadImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="X6f-vJ-DKg"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upload image by tapping the button" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0rS-6u-8W2">
+                                <rect key="frame" x="25" y="487" width="334" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Is it a cat or is it a dog?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CPj-6p-g07">
+                                <rect key="frame" x="23" y="143" width="327" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Results" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gyN-tB-W7q">
+                                <rect key="frame" x="25" y="587" width="334" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="s3R-tD-NrC" firstAttribute="top" secondItem="0rS-6u-8W2" secondAttribute="bottom" constant="24" id="44i-Sw-rKZ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="CPj-6p-g07" secondAttribute="trailing" constant="25" id="4bq-bv-w6i"/>
+                            <constraint firstItem="o2U-zD-GEo" firstAttribute="top" secondItem="6MF-Uq-NFv" secondAttribute="bottom" constant="116" id="79z-K4-b3L"/>
+                            <constraint firstItem="o2U-zD-GEo" firstAttribute="top" secondItem="CPj-6p-g07" secondAttribute="bottom" constant="44" id="7MH-Sr-Q43"/>
+                            <constraint firstItem="s3R-tD-NrC" firstAttribute="top" secondItem="o2U-zD-GEo" secondAttribute="bottom" constant="87" id="Bm5-jF-Mbd"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="s3R-tD-NrC" secondAttribute="trailing" constant="166" id="Cz1-bl-gAb"/>
+                            <constraint firstItem="0rS-6u-8W2" firstAttribute="top" secondItem="o2U-zD-GEo" secondAttribute="bottom" constant="42" id="ELP-Hy-Csp"/>
+                            <constraint firstItem="CPj-6p-g07" firstAttribute="top" secondItem="6MF-Uq-NFv" secondAttribute="bottom" constant="38" id="EWx-Yb-s7A"/>
+                            <constraint firstItem="s3R-tD-NrC" firstAttribute="top" secondItem="o2U-zD-GEo" secondAttribute="bottom" constant="87" id="I3W-om-NM7"/>
+                            <constraint firstItem="o2U-zD-GEo" firstAttribute="top" secondItem="6MF-Uq-NFv" secondAttribute="bottom" constant="116" id="I4U-z7-bTz"/>
+                            <constraint firstItem="0rS-6u-8W2" firstAttribute="top" secondItem="o2U-zD-GEo" secondAttribute="bottom" constant="42" id="MOL-0b-WJe"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="s3R-tD-NrC" secondAttribute="bottom" constant="105" id="MW1-lu-j63"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gyN-tB-W7q" secondAttribute="trailing" constant="16" id="Ogg-xL-GZh"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6MF-Uq-NFv" secondAttribute="trailing" constant="16" id="Q6X-rY-dZE"/>
+                            <constraint firstItem="0rS-6u-8W2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="25" id="SO1-7m-AMU"/>
+                            <constraint firstItem="CPj-6p-g07" firstAttribute="top" secondItem="6MF-Uq-NFv" secondAttribute="bottom" constant="38" id="Smh-O2-E0D"/>
+                            <constraint firstItem="6MF-Uq-NFv" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="Tlg-qa-Ojs"/>
+                            <constraint firstItem="gyN-tB-W7q" firstAttribute="top" secondItem="s3R-tD-NrC" secondAttribute="bottom" constant="25" id="Uvn-t5-g5y"/>
+                            <constraint firstItem="6MF-Uq-NFv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="YIZ-qE-4wG"/>
+                            <constraint firstItem="o2U-zD-GEo" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="25" id="Yjv-AG-IX0"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="gyN-tB-W7q" secondAttribute="bottom" constant="59" id="fJy-5Y-JZy"/>
+                            <constraint firstItem="CPj-6p-g07" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="23" id="hIF-GY-7Bt"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="0rS-6u-8W2" secondAttribute="trailing" constant="16" id="i9Z-xe-oMf"/>
+                            <constraint firstItem="gyN-tB-W7q" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="25" id="kLF-ec-5KV"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="6MF-Uq-NFv" secondAttribute="bottom" constant="562" id="ofG-sa-puX"/>
+                            <constraint firstItem="o2U-zD-GEo" firstAttribute="top" secondItem="CPj-6p-g07" secondAttribute="bottom" constant="44" id="p1r-bk-T7F"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="o2U-zD-GEo" secondAttribute="bottom" constant="222" id="pnP-JB-RVQ"/>
+                            <constraint firstItem="gyN-tB-W7q" firstAttribute="top" secondItem="s3R-tD-NrC" secondAttribute="bottom" constant="25" id="vh8-e7-gmE"/>
+                            <constraint firstItem="s3R-tD-NrC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="163" id="wd1-QZ-hNc"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="o2U-zD-GEo" secondAttribute="trailing" constant="25" id="ylj-UV-Qg1"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="thePic" destination="o2U-zD-GEo" id="oYJ-1v-eaE"/>
+                        <outlet property="theResults" destination="gyN-tB-W7q" id="BEO-ii-XPr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="132" y="133.5832083958021"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="animal-cat-cute-45201.jpg" width="2392" height="2500"/>
+    </resources>
+</document>
