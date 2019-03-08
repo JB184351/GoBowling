@@ -11,49 +11,61 @@ import UIKit
 class ToDoTableViewController: UITableViewController {
     
     // Array of ToDo items
-    var toDos: [ToDo] = []
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        let button = UIButton(frame: CGRect(origin: CGPoint(x: self.view.frame.width / 2 - 175, y: self.view.frame.size.height - 70), size: CGSize(width: 50, height: 50)))
-        
-        button.backgroundColor = UIColor.white
-        
-        self.navigationController?.view.addSubview(button)
-        
-        let toDo1 = ToDo()
-        toDo1.name = "Walk the Dog"
-        toDo1.important = false
-        
-        let toDo2 = ToDo()
-        toDo2.name = "Do homework"
-        toDo2.important = true
-        
-        toDos = [toDo1, toDo2]
+    var ToDoSaves: [ToDoSave] = []
+    
+    func getToDos() {
+        if let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext {
+            if let toDosSaves = try? context.fetch(ToDoSave.fetchRequest()) {
+                if let toDos = toDosSaves as? [ToDoSave] {
+                    ToDoSaves = toDos
+                    tableView.reloadData()
+                }
+            }
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        getToDos()
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return toDos.count
+        return ToDoSaves.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
 
-        let currentToDo = toDos[indexPath.row]
+        let currentToDo = ToDoSaves[indexPath.row]
         
         if currentToDo.important {
-            cell.textLabel?.text = toDos[indexPath.row].name + "❗️"
+            if let name = currentToDo.name {
+              cell.textLabel?.text = "❗️" + name
+            }
         }
         else {
-            cell.textLabel?.text = toDos[indexPath.row].name
+            cell.textLabel?.text = ToDoSaves[indexPath.row].name
         }
         
-        
-
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedToDo = ToDoSaves[indexPath.row]
+        performSegue(withIdentifier: "moveToComplete", sender: selectedToDo)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let createVC = segue.destination as? CreateToDoViewController {
+            createVC.ToDoTableVC = self
+        }
+        
+        if let completeVC = segue.destination as? CompleteOrDeleteViewController {
+            if let selectedToDo = sender as? ToDo {
+                completeVC.task = selectedToDo
+        }
+    }
 
+    }
 }
