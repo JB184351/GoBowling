@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  movingViews
+//  GoBowling
 //
-//  Created by Justin Bengtson on 1/25/19.
+//  Created by Justin Bengtson on 3/15/19.
 //  Copyright © 2019 Justin Bengtson. All rights reserved.
 //
 

@@ -8,9 +8,11 @@
 
 import UIKit
 import CoreLocation
+import MapKit
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
     
+    @IBOutlet weak var mapVIew: MKMapView!
     var locationManager: CLLocationManager!
 
     override func viewDidLoad() {
