@@ -77,7 +77,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     // Gets location of Bowling Locations around the User's current area and displays each location result on the map
     func getBowlingLocations() {
         let request = MKLocalSearch.Request()
-        request.naturalLanguageQuery = "Subway"
+        request.naturalLanguageQuery = "Bowling"
         request.region = mapView.region
         let search = MKLocalSearch(request: request)
         
