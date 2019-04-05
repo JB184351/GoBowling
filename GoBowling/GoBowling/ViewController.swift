@@ -112,9 +112,44 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
  
     // Whenever a user taps on an annotation this function will execute
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        
         if let annotationTitle = view.annotation?.title {
             print("User has tapped on the annotation with the title: \(annotationTitle!)")
         }
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard !(annotation is MKUserLocation) else {
+            return nil
+        }
+        
+        // Resizing the image for annotations
+        let annotationImage = UIImage(named: "bowlingannotation")
+        let size = CGSize(width: 50, height: 50)
+        UIGraphicsBeginImageContext(size)
+        annotationImage!.draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
+        let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
+        
+        let annotationIdentifier = "AnnotationIdentifier"
+        
+        var annotationView: MKAnnotationView?
+        
+        if let dequeuedAnnotationView = mapView.dequeueReusableAnnotationView(withIdentifier: annotationIdentifier) {
+            annotationView = dequeuedAnnotationView
+            annotationView?.annotation = annotation
+        }
+        else {
+            let av = MKAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
+            av.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+            annotationView = av
+        }
+        
+        if let annotationView = annotationView {
+            annotationView.canShowCallout = true
+            annotationView.image = resizedImage
+        }
+        
+        return annotationView
     }
     
     override func didReceiveMemoryWarning() {
@@ -144,6 +179,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         guard let location = locations.last else { return }
         let region = MKCoordinateRegion.init(center: location.coordinate, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
         mapView.setRegion(region, animated: true)
+        // Once we get the users location we use this method to stop updating the user's location
         locationManager.stopUpdatingLocation()
     }
     
