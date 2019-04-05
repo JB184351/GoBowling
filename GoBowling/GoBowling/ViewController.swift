@@ -10,12 +10,13 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class ViewController: UIViewController, CLLocationManagerDelegate {
+class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     let locationManager = CLLocationManager()
     let regionInMeters: Double = 10000
     var matchingItems: [MKMapItem] = [MKMapItem]()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,6 +90,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 // Removing annotations
                 let annotations = self.mapView.annotations
                 self.mapView.removeAnnotations(annotations)
+                
+                // Shows all bowling location results based on query made when launching the app
                 for item in response!.mapItems {
                     print("Name = \(String(describing: item.name))")
                     print("Phone = \(String(describing: item.phoneNumber))")
@@ -105,6 +108,20 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
     })
 }
+    
+ 
+    // Whenever a user taps on an annotation this function will execute
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        if let annotationTitle = view.annotation?.title {
+            print("User has tapped on the annotation with the title: \(annotationTitle!)")
+        }
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    
     // If users disables location they will get this pop up when the app tries to access location services again
     func showLocationDisabledPopUp() {
         let alertController = UIAlertController(title: "Background Location Access Disabled", message: "In order to find a place to go bowling we need your location", preferredStyle: .alert)
