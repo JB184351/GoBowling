@@ -85,6 +85,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         search.start(completionHandler: {(response, error) in
             if response == nil {
                 print("ERROR")
+                print(error as Any)
             }
             else {
                 // Removing annotations

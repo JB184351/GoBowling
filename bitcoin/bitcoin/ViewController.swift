@@ -45,9 +45,12 @@ class ViewController: UIViewController {
     func getPrice() {
         if let url = URL(string: "https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD,JPY,EUR") {
             URLSession.shared.dataTask(with: url) { (data, response, error) in
+                // Data object
                 if let data = data {
+                    // Parsing JSON
                     if let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String:Double] {
                         if let jsonDictionary = json {
+                            // Doing all the work on the main thread when availiable apple handles doing work on other threads
                             DispatchQueue.main.async {
                                 if let usdPrice = jsonDictionary["USD"] {
                                     self.usdLabel.text = self.doubleToMoneyString(price: usdPrice, currencyCode: "USD")
